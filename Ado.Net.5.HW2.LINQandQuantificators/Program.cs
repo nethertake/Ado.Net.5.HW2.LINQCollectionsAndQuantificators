@@ -91,7 +91,7 @@ namespace Ado.Net._5.HW2.LINQandQuantificators
 
             //FIRST ROW WHERE HIDDENAREA=1
 
-            var query3 = areas.Where(w => w.HiddenArea == "1").Select(a => a).Single();
+            var query3 = areas.Where(w => w.HiddenArea == "True").Select(a => a).First();
             Console.WriteLine(query3.AreaId + " " + query3.Name + " " + query3.FullName + " " + query3.IP);
 
             //LAST ROW WHERE PAVILLIONID=1
