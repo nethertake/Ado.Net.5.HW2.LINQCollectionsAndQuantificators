@@ -4,6 +4,7 @@ using System.Data;
 using System.Data.Entity;
 using System.Data.Entity.Core.Common.CommandTrees;
 using System.Data.SqlClient;
+using System.Diagnostics.CodeAnalysis;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -105,6 +106,22 @@ namespace Ado.Net._5.HW2.LINQandQuantificators
             {
                 Console.WriteLine(item.AreaId + " " + item.FullName + " " + item.Name + " ");
             }
+
+            //QUANTIFICATORS 2
+
+            string[] names = {"PT disassembly", "Engine testing"};
+            var query6 = areas.Where(w => names.Contains(w.Name));
+            foreach (var item in query6)
+            {
+                Console.WriteLine(item.AreaId + " " + item.FullName + " " + item.Name + " ");
+            }
+
+            //SUM
+
+            var query7 = areas.Sum(s => s.WorkingPeople);
+            Console.WriteLine("Количество работников" + query7);
+
+
 
 
 
