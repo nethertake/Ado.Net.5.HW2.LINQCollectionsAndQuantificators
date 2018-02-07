@@ -13,8 +13,8 @@ namespace Ado.Net._5.HW2.LINQandQuantificators
 {  
     class Program
     {
-        //DESKTOP-PG10UGI\SQLEXPRESS
-        private static string _connectionString = @"Data Source=192.168.111.88; Initial Catalog = CRCMS_new; User Id =Odmin; Password =Qwerty12";
+        //
+        private static string _connectionString = @"Data Source=DESKTOP-PG10UGI\SQLEXPRESS; Initial Catalog = CRCMS_new; User Id =sa; Password =Mc123456";
         private static Area db = new Area();
         static void Main(string[] args)
         {
@@ -44,7 +44,8 @@ namespace Ado.Net._5.HW2.LINQandQuantificators
                     ar.PavilionId = Int32.Parse(row["PavilionId"].ToString());
                     ar.IP = row["IP"].ToString();
                     ar.ParentId = Int32.Parse(row["ParentId"].ToString());
-                    ar.HiddenArea = Int32.Parse(row["HiddenArea"].ToString());
+                    ar.HiddenArea = row["HiddenArea"].ToString();
+                    
                 }
                 areas.Add(ar);
             }
@@ -90,7 +91,7 @@ namespace Ado.Net._5.HW2.LINQandQuantificators
 
             //FIRST ROW WHERE HIDDENAREA=1
 
-            var query3 = areas.Where(w => w.HiddenArea == 1).Select(a => a).Single();
+            var query3 = areas.Where(w => w.HiddenArea == "1").Select(a => a).Single();
             Console.WriteLine(query3.AreaId + " " + query3.Name + " " + query3.FullName + " " + query3.IP);
 
             //LAST ROW WHERE PAVILLIONID=1
