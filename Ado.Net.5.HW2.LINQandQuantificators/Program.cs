@@ -12,7 +12,8 @@ namespace Ado.Net._5.HW2.LINQandQuantificators
 {  
     class Program
     {
-        private static string _connectionString = @"Data Source = DESKTOP-PG10UGI\SQLEXPRESS; Initial Catalog = CRCMS_new; User Id = sa; Password = Mc123456";
+        //DESKTOP-PG10UGI\SQLEXPRESS
+        private static string _connectionString = @"Data Source=192.168.111.88; Initial Catalog = CRCMS_new; User Id =Odmin; Password =Qwerty12";
         private static Area db = new Area();
         static void Main(string[] args)
         {
@@ -42,6 +43,7 @@ namespace Ado.Net._5.HW2.LINQandQuantificators
                     ar.PavilionId = Int32.Parse(row["PavilionId"].ToString());
                     ar.IP = row["IP"].ToString();
                     ar.ParentId = Int32.Parse(row["ParentId"].ToString());
+                    ar.HiddenArea = Int32.Parse(row["HiddenArea"].ToString());
                 }
                 areas.Add(ar);
             }
@@ -73,16 +75,42 @@ namespace Ado.Net._5.HW2.LINQandQuantificators
                 Console.WriteLine(item.AreaId + "  " + item.IP + "  " + item.ParentId);
             }
 
-        
+            //LOOKUP 
+
+            ILookup<string, Area> lookupArea = areas.ToLookup(k => k.IP, k2 => k2);
+            foreach (var item in lookupArea)
+            {
+                Console.WriteLine(item.Key);
+                foreach (var item2 in item)
+                {
+                    Console.WriteLine(item2.AreaId + " " + item2.Name + " " + item2.FullName);
+                }
+            }
+
+            //FIRST ROW WHERE HIDDENAREA=1
+
+            var query3 = areas.Where(w => w.HiddenArea == 1).Select(a => a).Single();
+            Console.WriteLine(query3.AreaId + " " + query3.Name + " " + query3.FullName + " " + query3.IP);
+
+            //LAST ROW WHERE PAVILLIONID=1
+
+            var query4 = areas.Where(w => w.PavilionId == 1).Select(a => a).Last();
+            Console.WriteLine(query4.AreaId + " " + query4.Name + " " + query4.FullName + " " + query4.IP);
+
+            //QUANTIFICATORS
+            string[] IPs = {"10.53.34.85", "10.53.34.77", "10.53.34.53"};
+
+            var query5 = areas.Where(w => w.PavilionId == 1 && IPs.Contains(w.IP));
+            foreach (var item in query5)
+            {
+                Console.WriteLine(item.AreaId + " " + item.FullName + " " + item.Name + " ");
+            }
+
 
 
         }
 
-        static void ToAreaList()
-        {
-            
-
-        }
+      
 
 
     }

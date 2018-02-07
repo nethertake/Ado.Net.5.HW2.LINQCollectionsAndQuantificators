@@ -27,7 +27,7 @@ namespace Ado.Net._5.HW2.LINQandQuantificators
 
         public bool? MultipleOrders { get; set; }
 
-        public bool? HiddenArea { get; set; }
+        public int? HiddenArea { get; set; }
 
         public string IP { get; set; }
 
