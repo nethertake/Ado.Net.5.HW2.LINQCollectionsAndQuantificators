@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Data;
 using System.Data.Entity;
+using System.Data.Entity.Core.Common.CommandTrees;
 using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
@@ -40,6 +41,7 @@ namespace Ado.Net._5.HW2.LINQandQuantificators
                     ar.WorkingPeople = Int32.Parse(row["WorkingPeople"].ToString());
                     ar.PavilionId = Int32.Parse(row["PavilionId"].ToString());
                     ar.IP = row["IP"].ToString();
+                    ar.ParentId = Int32.Parse(row["ParentId"].ToString());
                 }
                 areas.Add(ar);
             }
@@ -58,8 +60,21 @@ namespace Ado.Net._5.HW2.LINQandQuantificators
 
             foreach (Area item in query)
             {
-                Console.WriteLine(item.AreaId + "  " + item.Name + "  " + item.IP + "  " + item.PavilionId);
+                Console.WriteLine(item.AreaId + "  " + item.IP + "  " + item.PavilionId);
             }
+            Console.WriteLine("-----------------------------------------------------");
+            //FILTER WITHOUT NULLABLE IP and parentid!=0
+
+            IEnumerable<Area> query2 = from a in areas where a.IP != "" && a.ParentId!=0 select a;
+
+
+            foreach (Area item in query2)
+            {
+                Console.WriteLine(item.AreaId + "  " + item.IP + "  " + item.ParentId);
+            }
+
+        
+
 
         }
 
