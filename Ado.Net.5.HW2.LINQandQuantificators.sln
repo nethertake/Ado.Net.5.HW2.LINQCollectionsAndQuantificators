@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.27130.2010
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Ado.Net.5.HW2.LINQandQuantificators", "Ado.Net.5.HW2.LINQandQuantificators\Ado.Net.5.HW2.LINQandQuantificators.csproj", "{A32FF1F3-19EE-472A-A164-355E7677EA17}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{A32FF1F3-19EE-472A-A164-355E7677EA17}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A32FF1F3-19EE-472A-A164-355E7677EA17}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A32FF1F3-19EE-472A-A164-355E7677EA17}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A32FF1F3-19EE-472A-A164-355E7677EA17}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {0314B869-44CD-4A85-BAAE-6B223D324F56}
+	EndGlobalSection
+EndGlobal
